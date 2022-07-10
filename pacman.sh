@@ -76,6 +76,9 @@ PKGS=(
    # 'intel-undervolt'
    # 'cpupower'
 
+    # KDE ------------------------------------------------------
+    'plasma'
+
 )
 
 for PKG in "${PKGS[@]}"; do
@@ -110,6 +113,8 @@ sudo systemctl enable --now intel-undervolt.service
 echo "  intel-undervolt enabled and started"
 sudo systemctl enable --now auto-cpufreq.service
 echo "  auto-cpufreq enabled and started"
+
+sudo systemctl enable sddm.service
 
 # ------------------------------------------------------------------------
 
