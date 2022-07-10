@@ -50,6 +50,7 @@ echo "ivo ALL=(ALL) ALL" >> /etc/sudoers.d/ivo
 ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
 ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d/
 ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/
+sudo reflector -c Croatia -a 15 --sort rate --save /etc/pacman.d/mirrorlist
 
 printf "\e[1;32mDone! Type exit, umount and reboot.\e[0m"
 
