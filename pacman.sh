@@ -123,7 +123,7 @@ sudo systemctl enable sddm.service
 sudo reflector -c Croatia -a 10 --sort rate --save /etc/pacman.d/mirrorlist
 # ------------------------------------------------------------------------
 
-
+echo
 /bin/echo -e "\e[1;32mREBOOTING IN 5..4..3..2..1..\e[0m"
 sleep 5
 reboot
