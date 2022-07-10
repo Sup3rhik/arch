@@ -4,7 +4,7 @@
 #-------------------------------------------------------------------------
 
 
-paru -S vivaldi fwupd packagekit-qt5 flatpak gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next etcher-bin capt-src mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin lutris-git spotify teamviewer
+paru -S --noconfirm vivaldi fwupd packagekit-qt5 flatpak gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next etcher-bin capt-src mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin lutris-git spotify teamviewer
 
 #-------------------------------------------------------------------------
 
