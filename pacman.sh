@@ -74,9 +74,12 @@ PKGS=(
     'openbsd-netcat'
 
     # LAPTOP ------------------------------------------------------
-   # 'intel-undervolt'
-   # 'cpupower'
-
+    'intel-undervolt'
+    'cpupower'
+    'sane-airscan'
+    'ipp-usb'
+    'skanlite'
+    
     # KDE ------------------------------------------------------
     'plasma'
     'sddm'
