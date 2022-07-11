@@ -4,7 +4,7 @@
 #-------------------------------------------------------------------------
 
 
-paru -S --noconfirm vivaldi fwupd packagekit-qt5 flatpak gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next etcher-bin capt-src mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin lutris-git spotify teamviewer
+paru -S --noconfirm vivaldi fwupd packagekit-qt5 flatpak gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next etcher-bin capt-src mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin lutris-git spotify teamviewer zramd
 
 #-------------------------------------------------------------------------
 
@@ -19,6 +19,8 @@ echo "  teamviewerd enabled"
 sudo systemctl enable --now ckb-next-daemon
 echo "  iCue enabled and started"
 
+sudo systemctl enable --now zramd.service
+echo "  SWAP enabled and started"
 # ------------------------------------------------------------------------
 
 echo
