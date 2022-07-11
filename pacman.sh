@@ -123,7 +123,13 @@ sudo systemctl enable sddm.service
 sudo reflector -c Croatia -a 10 --sort rate --save /etc/pacman.d/mirrorlist
 # ------------------------------------------------------------------------
 
-cp ~/Documents/file ~/
+tar -xzvf config.tar.gz
+tar -xzvf icons.tar.gz
+tar -xzvf local.tar.gz
+mv .config ~/
+mv .icons ~/
+mv .local ~/
+
 
 #   THEME
 lookandfeeltool -a org.kde.breezedark.desktop
