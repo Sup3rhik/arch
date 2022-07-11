@@ -7,6 +7,8 @@
 #  Arch Linux Post Install Setup and Config
 #-------------------------------------------------------------------------
 
+sudo pacman -S --noconfirm archlinux-keyring
+
 echo
 echo "INSTALLING SOFTWARE"
 echo
