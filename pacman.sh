@@ -124,7 +124,7 @@ sudo reflector -c Croatia -a 10 --sort rate --save /etc/pacman.d/mirrorlist
 # ------------------------------------------------------------------------
 #   THEME
 lookandfeeltool -a org.kde.breezedark.desktop
-
+/usr/lib/plasma-changeicons BeautyLine
 
 
 
