@@ -122,6 +122,9 @@ echo "  auto-cpufreq enabled and started"
 sudo systemctl enable sddm.service
 sudo reflector -c Croatia -a 10 --sort rate --save /etc/pacman.d/mirrorlist
 # ------------------------------------------------------------------------
+
+cp ~/Documents/file ~/
+
 #   THEME
 lookandfeeltool -a org.kde.breezedark.desktop
 /usr/lib/plasma-changeicons BeautyLine
