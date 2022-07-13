@@ -3,6 +3,8 @@
 #  Arch Linux Post Install Setup and Config
 #-------------------------------------------------------------------------
 
+sudo pacman -S --noconfirm archlinux-keyring
+sudo pacman -Syu --noconfirm
 
 paru -S --noconfirm vivaldi packagekit-qt5 gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next etcher-bin capt-src mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin lutris-git spotify teamviewer zramd
 
@@ -31,14 +33,33 @@ echo "  firewall enabled and started"
 sudo ufw default deny
 sudo ufw enable
 sudo ufw allow from 192.168.0.0/24
-sudo ufw allow 1714:1764/udp
-sudo ufw allow 1714:1764/tcp
+#sudo ufw allow 1714:1764/udp
+#sudo ufw allow 1714:1764/tcp
 sudo ufw reload
 
 # ------------------------------------------------------------------------
+
 #   THEME
+
+sleep 3
 lookandfeeltool -a org.kde.breezedark.desktop
+sleep 3
 /usr/lib/plasma-changeicons BeautyLine
+tar -xzvf config.tar.gz
+tar -xzvf icons.tar.gz
+tar -xzvf local.tar.gz
+tar -xzvf Omen.tar.gz
+tar -xzvf Dragon.tar.gz
+mv .config ~/
+mv .icons ~/
+mv .local ~/
+
+sudo mv Omen /usr/share/sddm/themes/
+sudo mv Dragon /usr/share/sddm/themes/
+sudo rm -rf /usr/share/sddm/themes/maldives
+sudo rm -rf /usr/share/sddm/themes/maya
+sudo rm -rf /usr/share/sddm/themes/elarun
+sudo rm -rf /usr/share/sddm/themes/breeze
 
 
 echo "Done!"

@@ -127,23 +127,6 @@ sudo systemctl enable sddm.service
 sudo reflector -c Croatia -a 10 --sort rate --save /etc/pacman.d/mirrorlist
 # ------------------------------------------------------------------------
 
-tar -xzvf config.tar.gz
-tar -xzvf icons.tar.gz
-tar -xzvf local.tar.gz
-tar -xzvf Omen.tar.gz
-tar -xzvf Dragon.tar.gz
-mv .config ~/
-mv .icons ~/
-mv .local ~/
-
-sudo mv Omen /usr/share/sddm/themes/
-sudo mv Dragon /usr/share/sddm/themes/
-sudo rm -rf /usr/share/sddm/themes/maldives
-sudo rm -rf /usr/share/sddm/themes/maya
-sudo rm -rf /usr/share/sddm/themes/elarun
-sudo rm -rf /usr/share/sddm/themes/breeze
-
-
 echo
 /bin/echo -e "\e[1;32mREBOOTING IN 5..4..3..2..1..\e[0m"
 sleep 5
