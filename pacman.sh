@@ -8,7 +8,7 @@
 #-------------------------------------------------------------------------
 
 sudo pacman -S --noconfirm archlinux-keyring
-sudo pacman -Syu
+sudo pacman -Syu --noconfirm
 
 echo
 echo "INSTALLING SOFTWARE"
