@@ -134,8 +134,8 @@ mv .config ~/
 mv .icons ~/
 mv .local ~/
 
-sudo mv -r Omen /usr/share/sddm/themes/
-sudo mv -r Dragon /usr/share/sddm/themes/
+sudo mv Omen /usr/share/sddm/themes/
+sudo mv Dragon /usr/share/sddm/themes/
 sudo rm -rf /usr/share/sddm/themes/maldives
 sudo rm -rf /usr/share/sddm/themes/maya
 sudo rm -rf /usr/share/sddm/themes/elarun
