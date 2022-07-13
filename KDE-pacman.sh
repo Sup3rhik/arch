@@ -140,7 +140,7 @@ sudo rm -rf /usr/share/sddm/themes/maldives
 sudo rm -rf /usr/share/sddm/themes/maya
 sudo rm -rf /usr/share/sddm/themes/elarun
 
-
+sudo setxbmap -layout hr
 
 
 
