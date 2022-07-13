@@ -63,6 +63,7 @@ PKGS=(
 
     'gnome-subtitles'
     'vlc'
+    'mkvtoolnix-gui'
 
     # VIRTUALIZATION ------------------------------------------------------
 
@@ -108,7 +109,6 @@ echo "FINAL SETUP AND CONFIGURATION"
 echo
 echo "ENABLING SERVICE DAEMONS"
 
-
 sudo systemctl enable --now libvirtd.service
 echo "  libvirtd enabled and started"
 sudo systemctl enable --now virtlogd.socket
@@ -141,6 +141,7 @@ sudo mv Dragon /usr/share/sddm/themes/
 sudo rm -rf /usr/share/sddm/themes/maldives
 sudo rm -rf /usr/share/sddm/themes/maya
 sudo rm -rf /usr/share/sddm/themes/elarun
+sudo rm -rf /usr/share/sddm/themes/breeze
 
 
 echo
