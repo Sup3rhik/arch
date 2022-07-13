@@ -153,19 +153,16 @@ sudo rm -rf /usr/share/sddm/themes/elarun
 sudo rm -rf /usr/share/sddm/themes/breeze
 
 #------------------------------------------------------------------------
-# nvme1n1p4 - Second partition
-UUID=c388d55f-1412-4413-863d-a2e3104fc66a       /media/btrfs/ssd     btrfs           defaults,rw,relatime        0 0
-
-# HDD
-# sda1 - storage
-UUID=aefa7186-9879-438f-b2cc-f3acf783a641       /media/btrfs/hdd     btrfs           defaults,rw,relatime        0 0
-# sda2 - backups
-UUID=43c46a43-2620-4894-92fb-c2e1d6acebfd       /media/btrfs/bkp     btrfs           defaults,rw,relatime        0 0
-
-# nvme0n1p3 - Windows
-UUID=38D434D7D43498D8       /media/ntfs/wsys           ntfs-3g           defaults,rw,relatime         0 0
-# nvme0n1p4 - WSSD
-UUID=1034B42F34B419A4       /media/ntfs/wssd           ntfs-3g           defaults,rw,relatime         0 0
+echo "# nvme1n1p4 - Second partition" >> /etc/fstab
+echo "UUID=c388d55f-1412-4413-863d-a2e3104fc66a       /media/btrfs/ssd     btrfs           defaults,rw,relatime        0 0" >> /etc/fstab
+echo "# sda1 - storage" >> /etc/fstab
+echo "UUID=aefa7186-9879-438f-b2cc-f3acf783a641       /media/btrfs/hdd     btrfs           defaults,rw,relatime        0 0" >> /etc/fstab
+echo "# sda2 - Backups" >> /etc/fstab
+echo "UUID=43c46a43-2620-4894-92fb-c2e1d6acebfd       /media/btrfs/bkp     btrfs           defaults,rw,relatime        0 0" >> /etc/fstab
+echo "# nvme0n1p3 - Windows" >> /etc/fstab
+echo "UUID=38D434D7D43498D8       /media/ntfs/wsys           ntfs-3g           defaults,rw,relatime         0 0" >> /etc/fstab
+echo "# nvme0n1p4 - Windows_SSD" >> /etc/fstab
+echo "UUID=1034B42F34B419A4       /media/ntfs/wssd           ntfs-3g           defaults,rw,relatime         0 0" >> /etc/fstab
 #------------------------------------------------------------------------
 
 echo
