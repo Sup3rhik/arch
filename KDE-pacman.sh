@@ -140,9 +140,7 @@ sudo rm -rf /usr/share/sddm/themes/maldives
 sudo rm -rf /usr/share/sddm/themes/maya
 sudo rm -rf /usr/share/sddm/themes/elarun
 
-#   THEME
-lookandfeeltool -a org.kde.breezedark.desktop
-/usr/lib/plasma-changeicons BeautyLine
+
 
 
 
