@@ -109,6 +109,8 @@ sudo sed -i '104s/.//' /etc/libvirt/libvirtd.conf
 echo
 echo "FINAL SETUP AND CONFIGURATION"
 
+sudo usermod -a -G libvirt $(whoami)
+
 echo
 echo "ENABLING SERVICE DAEMONS"
 
