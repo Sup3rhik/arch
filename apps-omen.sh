@@ -112,8 +112,8 @@ sudo systemctl enable --now zramd.service
 echo "  SWAP enabled and started"
 sudo systemctl enable sddm.service
 echo "  SDDM enabled"
-
-
+sudo systemctl enable auto-cpufreq
+echo "  Auto-CPU enabled"
 # ------------------------------------------------------------------------
 
 echo
