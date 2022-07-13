@@ -152,6 +152,7 @@ sudo rm -rf /usr/share/sddm/themes/maya
 sudo rm -rf /usr/share/sddm/themes/elarun
 sudo rm -rf /usr/share/sddm/themes/breeze
 
+#------------------------------------------------------------------------
 # nvme1n1p4 - Second partition
 UUID=c388d55f-1412-4413-863d-a2e3104fc66a       /media/btrfs/ssd     btrfs           defaults,rw,relatime        0 0
 
@@ -165,7 +166,7 @@ UUID=43c46a43-2620-4894-92fb-c2e1d6acebfd       /media/btrfs/bkp     btrfs      
 UUID=38D434D7D43498D8       /media/ntfs/wsys           ntfs-3g           defaults,rw,relatime         0 0
 # nvme0n1p4 - WSSD
 UUID=1034B42F34B419A4       /media/ntfs/wssd           ntfs-3g           defaults,rw,relatime         0 0
-
+#------------------------------------------------------------------------
 
 echo
 /bin/echo -e "\e[1;32mREBOOTING IN 5..4..3..2..1..\e[0m"
