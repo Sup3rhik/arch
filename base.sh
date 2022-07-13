@@ -12,18 +12,11 @@ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "KEYMAP=croat" >> /etc/vconsole.conf
 
 echo "arch-IME" >> /etc/hostname
-
 echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 arch-IME.localdomain arch-IME" >> /etc/hosts
 
 echo root:passwd | chpasswd
-
-localectl --no-ask-password set-keymap hr
-echo "Numlock=On" >> /etc/sddm.conf
-sed -i '12s/.//' /etc/profile.d/freetype2.sh
-echo "PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"" >> /etc/environment
-echo "EDITOR="/usr/bin/vim"" >> /etc/environment
 
 # Add sudo no password rights
 #sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
@@ -31,8 +24,8 @@ echo "EDITOR="/usr/bin/vim"" >> /etc/environment
 
 #Enable multilib
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-pacman -Sy --noconfirm --needed
 
+pacman -Sy --noconfirm --needed
 pacman -S btrfs-progs base-devel linux-zen-headers linux-firmware grub efibootmgr dosfstools os-prober mtools networkmanager dialog wpa_supplicant wireless_tools nano wget reflector snapper dolphin konsole rsync ark unzip ntfs-3g kate bash-completion sof-firmware flatpak kinit ttf-droid ttf-hack ttf-font-awesome otf-font-awesome ttf-lato ttf-liberation ttf-linux-libertine ttf-opensans ttf-roboto ttf-ubuntu-font-family terminus-font ufw cronie ksysguard htop kfind sshfs samba openssh nfs-utils cups nmap print-manager cups-pdf grub-customizer
 
 #pacman -S --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings
@@ -59,6 +52,12 @@ echo "ivo ALL=(ALL) ALL" >> /etc/sudoers.d/ivo
 ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
 ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d/
 ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/
+sudo reflector -c Croatia -a 10 --sort rate --save /etc/pacman.d/mirrorlist
+localectl --no-ask-password set-keymap hr
+echo "Numlock=On" >> /etc/sddm.conf
+sed -i '12s/.//' /etc/profile.d/freetype2.sh
+echo "PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"" >> /etc/environment
+echo "EDITOR="/usr/bin/vim"" >> /etc/environment
 
 
 printf "\e[1;32mDone! Type exit, umount and reboot.\e[0m"
