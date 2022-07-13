@@ -9,7 +9,6 @@ cd paru-bin
 sudo pacman -Syu
 makepkg -si
 
-
 echo
 echo "INSTALLING SOFTWARE"
 echo
@@ -76,7 +75,6 @@ PKGS=(
     # KDE -----------------------------------------------------------------
     'plasma'
     'sddm'
-
 )
 
 for PKG in "${PKGS[@]}"; do
