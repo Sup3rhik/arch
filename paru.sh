@@ -6,7 +6,7 @@
 sudo pacman -S --noconfirm archlinux-keyring
 sudo pacman -Syu --noconfirm
 
-paru -S --noconfirm vivaldi packagekit-qt5 gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next etcher-bin capt-src mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin lutris-git spotify teamviewer zramd
+paru -S --noconfirm aic94xx-firmware wd719x-firmware vivaldi packagekit-qt5 gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next etcher-bin capt-src mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin lutris-git spotify teamviewer zramd
 
 #-------------------------------------------------------------------------
 
