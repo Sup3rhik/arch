@@ -4,7 +4,7 @@
 #-------------------------------------------------------------------------
 
 
-paru -S --noconfirm vivaldi fwupd packagekit-qt5 flatpak gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next etcher-bin capt-src mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin lutris-git spotify teamviewer zramd
+paru -S --noconfirm vivaldi fwupd packagekit-qt5 gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next etcher-bin capt-src mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin lutris-git spotify teamviewer zramd
 
 #-------------------------------------------------------------------------
 
@@ -36,6 +36,10 @@ sudo ufw allow 1714:1764/tcp
 sudo ufw reload
 
 # ------------------------------------------------------------------------
+#   THEME
+lookandfeeltool -a org.kde.breezedark.desktop
+/usr/lib/plasma-changeicons BeautyLine
+
 
 echo "Done!"
 echo
