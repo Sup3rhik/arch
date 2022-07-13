@@ -10,6 +10,12 @@
 sudo pacman -S --noconfirm archlinux-keyring
 sudo pacman -Syu --noconfirm
 
+git clone https://aur.archlinux.org/paru-bin
+cd paru-bin
+sudo pacman -Syu
+makepkg -si
+
+
 echo
 echo "INSTALLING SOFTWARE"
 echo
