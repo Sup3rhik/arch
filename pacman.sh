@@ -8,6 +8,7 @@
 #-------------------------------------------------------------------------
 
 sudo pacman -S --noconfirm archlinux-keyring
+sudo pacman -Syu
 
 echo
 echo "INSTALLING SOFTWARE"
@@ -23,13 +24,13 @@ PKGS=(
 
     # GRAPHICS AND DESIGN -------------------------------------------------
 
-    'gcolor2'               # Colorpicker
-    'gimp'                  # GNU Image Manipulation Program
-    'inkscape'              # Vector image creation app
-    'imagemagick'           # Command line image manipulation tool
-    'gwenview'              # Image viewer
-    'spectacle'             # Tools for screenshots
-    'okular'                # PDF viewer
+    'gcolor2'
+    'gimp'   
+    'inkscape'
+    'imagemagick'
+    'gwenview'   
+    'spectacle'  
+    'okular'     
 
     # GAMING --------------------------------------------------
 
@@ -46,21 +47,22 @@ PKGS=(
 
     # DISK UTILITIES ------------------------------------------------------
 
-    'kdiskmark'             # Disk speed test
-    'filelight'             # Drive size
-    'partitionmanager'      # Disk utility
+    'kdiskmark'
+    'filelight'
+    'partitionmanager'
 
     # Office ---------------------------------------------------------
 
-    'libreoffice'           # Office suite
-    'korganizer'            # Calendar
-    'gnucash'               # Book keeping program
-    'nextcloud-client'      # Cloud service
+    'libreoffice'
+    'korganizer' 
+    'gnucash'
+    'nextcloud-client'
     'kcalc'
 
     # MEDIA ---------------------------------------------------------------
 
-    'gnome-subtitles'       # Subtitle editor
+    'gnome-subtitles'
+    'vlc'
 
     # VIRTUALIZATION ------------------------------------------------------
 
@@ -139,9 +141,6 @@ sudo mv Dragon /usr/share/sddm/themes/
 sudo rm -rf /usr/share/sddm/themes/maldives
 sudo rm -rf /usr/share/sddm/themes/maya
 sudo rm -rf /usr/share/sddm/themes/elarun
-
-sudo setxbmap -layout hr
-
 
 
 echo
