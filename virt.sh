@@ -62,8 +62,8 @@ sudo sed -i '$ a\log_outputs="1:file:/var/log/libvirt/libvirtd.log"' /etc/libvir
 
 sudo usermod -a -G libvirt $(whoami)
 
-sed -i '/#user = "libvirt-qemu"/c \user = "ivo"' /etc/libvirt/qemu.conf
-sed -i '/#group = "libvirt-qemu"/c \group = "wheel"' /etc/libvirt/qemu.conf
+sudo sed -i '/#user = "libvirt-qemu"/c \user = "ivo"' /etc/libvirt/qemu.conf
+sudo sed -i '/#group = "libvirt-qemu"/c \group = "wheel"' /etc/libvirt/qemu.conf
 sudo mkdir -p /var/lib/libvirt/vbios
 
 #-------------------------------------------------------------------------
