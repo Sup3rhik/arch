@@ -72,9 +72,6 @@ PKGS=(
     'ipp-usb'
     'skanlite'
     
-    # KDE -----------------------------------------------------------------
-    'plasma'
-    'sddm'
 )
 
 for PKG in "${PKGS[@]}"; do
@@ -108,8 +105,6 @@ sudo systemctl enable --now ckb-next-daemon
 echo "  iCue enabled and started"
 sudo systemctl enable --now zramd.service
 echo "  SWAP enabled and started"
-sudo systemctl enable sddm.service
-echo "  SDDM enabled"
 sudo systemctl enable auto-cpufreq
 echo "  Auto-CPU enabled"
 # ------------------------------------------------------------------------
