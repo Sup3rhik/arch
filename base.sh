@@ -42,7 +42,7 @@ pacman -S --noconfirm btrfs-progs base-devel linux-zen-headers linux-firmware gr
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
 sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/c \GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 intel_iommu=on iommu=pt"' /etc/default/grub
-#sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/default/grub
+sed -i '/#GRUB_DISABLE_OS_PROBER="false"/c \GRUB_DISABLE_OS_PROBER="false"' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 #----------------------------------SERVICES---------------------------------
