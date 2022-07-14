@@ -10,6 +10,7 @@ sed -i '279s/.//' /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "KEYMAP=croat" >> /etc/vconsole.conf
+localectl --no-ask-password set-keymap hr
 
 echo "arch-IME" >> /etc/hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
@@ -53,14 +54,32 @@ ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
 ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d/
 ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/
 sudo reflector -c Croatia -a 10 --sort rate --save /etc/pacman.d/mirrorlist
-localectl --no-ask-password set-keymap hr
 echo "Numlock=On" >> /etc/sddm.conf
 sed -i '12s/.//' /etc/profile.d/freetype2.sh
 echo "PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"" >> /etc/environment
 echo "EDITOR="/usr/bin/vim"" >> /etc/environment
 
+#----------------------------------THEME----------------------------------
+tar -xzvf config.tar.gz
+tar -xzvf icons.tar.gz
+tar -xzvf local.tar.gz
+tar -xzvf Omen.tar.gz
+tar -xzvf Dragon.tar.gz
+mv .config ~/
+mv .icons ~/
+mv .local ~/
 
-printf "\e[1;32mDone! Type exit, umount and reboot.\e[0m"
+sudo mv Omen /usr/share/sddm/themes/
+sudo mv Dragon /usr/share/sddm/themes/
+sudo rm -rf /usr/share/sddm/themes/maldives
+sudo rm -rf /usr/share/sddm/themes/maya
+sudo rm -rf /usr/share/sddm/themes/elarun
+sudo rm -rf /usr/share/sddm/themes/breeze
+
+pacman -S --noconfirm plasma sddm
+systemctl enable sddm
+
+printf "\e[1;32mDone! Type EXIT, UMOUNT and REBOOT.\e[0m"
 
 
 
