@@ -133,13 +133,13 @@ tar -xzvf config.tar.gz
 tar -xzvf icons.tar.gz
 tar -xzvf local.tar.gz
 tar -xzvf Omen.tar.gz
-tar -xzvf Dragon.tar.gz
+#tar -xzvf Dragon.tar.gz
 mv .config ~/
 mv .icons ~/
 mv .local ~/
 
 sudo mv Omen /usr/share/sddm/themes/
-sudo mv Dragon /usr/share/sddm/themes/
+#sudo mv Dragon /usr/share/sddm/themes/
 sudo rm -rf /usr/share/sddm/themes/maldives
 sudo rm -rf /usr/share/sddm/themes/maya
 sudo rm -rf /usr/share/sddm/themes/elarun
