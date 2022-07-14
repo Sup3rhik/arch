@@ -48,6 +48,7 @@ sudo chmod +x /etc/libvirt/hooks/qemu.d/Windows/prepare/begin/start.sh
 sudo cp revert.sh /etc/libvirt/hooks/qemu.d/Windows/release/end/
 sudo chmod +x /etc/libvirt/hooks/qemu.d/Windows/release/end/revert.sh
 
+sudo touch /etc/libvirt/hooks/kvm.conf
 sudo sed -i '$ a\VIRSH_GPU_CPU=pci_0000_00_01_0' /etc/libvirt/hooks/kvm.conf
 sudo sed -i '$ a\VIRSH_GPU_VIDEO=pci_0000_01_00_0' /etc/libvirt/hooks/kvm.conf
 sudo sed -i '$ a\VIRSH_GPU_AUDIO=pci_0000_01_00_1' /etc/libvirt/hooks/kvm.conf
