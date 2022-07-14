@@ -10,9 +10,7 @@ sudo pacman -Syu
 makepkg -si
 cd ..
 
-echo
-echo "INSTALLING SOFTWARE"
-echo
+# ---------------------------------APPS-PACMAN----------------------------------
 
 PKGS=(
 
@@ -65,13 +63,16 @@ PKGS=(
     'vlc'
     'mkvtoolnix-gui'
 
+    # SCANER --------------------------------------------------------------
+
+    'sane-airscan'
+    'ipp-usb'
+    'skanlite'
+
     # LAPTOP --------------------------------------------------------------
 
     'intel-undervolt'
     'cpupower'
-    'sane-airscan'
-    'ipp-usb'
-    'skanlite'
     
 )
 
@@ -84,17 +85,11 @@ echo
 echo "Done!"
 echo
 
-#-------------------------------------------------------------------------
+# ---------------------------------APPS-PARU--------------------------------------
 
-paru -S --noconfirm aic94xx-firmware wd719x-firmware auto-cpufreq packagekit-qt5 gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next etcher-bin capt-src mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin lutris-git spotify teamviewer zramd vivaldi
+paru -S --noconfirm auto-cpufreq capt-src aic94xx-firmware wd719x-firmware packagekit-qt5 gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next etcher-bin mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin lutris-git spotify teamviewer zramd vivaldi brave-bin
 
-#-------------------------------------------------------------------------
-
-echo
-echo "FINAL SETUP AND CONFIGURATION"
-
-echo
-echo "ENABLING SERVICE DAEMONS"
+# ---------------------------------SERVICES---------------------------------------
 
 sudo systemctl enable --now intel-undervolt.service
 echo "  intel-undervolt enabled and started"
@@ -108,7 +103,8 @@ sudo systemctl enable --now zramd.service
 echo "  SWAP enabled and started"
 sudo systemctl enable auto-cpufreq
 echo "  Auto-CPU enabled"
-# ------------------------------------------------------------------------
+
+# ---------------------------------FIREWALL---------------------------------------
 
 echo
 echo "ENABLING FIREWALL"
@@ -122,11 +118,8 @@ sudo ufw allow from 192.168.0.0/24
 #sudo ufw allow 1714:1764/tcp
 sudo ufw reload
 
-# ------------------------------------------------------------------------
+# ---------------------------------THEME---------------------------------------
 
-#   THEME
-
-sleep 3
 lookandfeeltool -a org.kde.breezedark.desktop
 sleep 3
 /usr/lib/plasma-changeicons BeautyLine
@@ -146,18 +139,29 @@ sudo rm -rf /usr/share/sddm/themes/maya
 sudo rm -rf /usr/share/sddm/themes/elarun
 sudo rm -rf /usr/share/sddm/themes/breeze
 
-#------------------------------------------------------------------------
-echo "# nvme1n1p4 - Second partition" >> /etc/fstab
-echo "UUID=c388d55f-1412-4413-863d-a2e3104fc66a       /media/btrfs/ssd     btrfs           defaults,rw,relatime        0 0" >> /etc/fstab
-echo "# sda1 - storage" >> /etc/fstab
-echo "UUID=aefa7186-9879-438f-b2cc-f3acf783a641       /media/btrfs/hdd     btrfs           defaults,rw,relatime        0 0" >> /etc/fstab
-echo "# sda2 - Backups" >> /etc/fstab
-echo "UUID=43c46a43-2620-4894-92fb-c2e1d6acebfd       /media/btrfs/bkp     btrfs           defaults,rw,relatime        0 0" >> /etc/fstab
-echo "# nvme0n1p3 - Windows" >> /etc/fstab
-echo "UUID=38D434D7D43498D8       /media/ntfs/wsys           ntfs-3g           defaults,rw,relatime         0 0" >> /etc/fstab
-echo "# nvme0n1p4 - Windows_SSD" >> /etc/fstab
-echo "UUID=1034B42F34B419A4       /media/ntfs/wssd           ntfs-3g           defaults,rw,relatime         0 0" >> /etc/fstab
-#------------------------------------------------------------------------
+# ---------------------------------FSTAB---------------------------------------
+
+sudo sed -i '$ a # \t\t nvme1n1p3 - Linux SSD' /etc/fstab
+sudo sed -i '$ a UUID=c388d55f-1412-4413-863d-a2e3104fc66a\t/media/btrfs/ssd\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+
+sudo sed -i '$ a #HDD' /etc/fstab
+sudo sed -i '$ a # \t\t sda1 - NEXTCLOUD' /etc/fstab
+sudo sed -i '$ a UUID=fdd0754d-49f0-4802-80ee-40f23d641fea\t/media/btrfs/nc\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+
+sudo sed -i '$ a # \t\t sda2 - STORAGE' /etc/fstab
+sudo sed -i '$ a UUID=2750d2ff-3da2-4904-9a9f-b73ae91a8fbe\t/media/btrfs/hdd\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+
+sudo sed -i '$ a # \t\t sda3 - BACKUPS' /etc/fstab
+sudo sed -i '$ a UUID=a3f1d11d-0fcc-46b5-9821-9801c2206b97\t/media/btrfs/bkp\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+
+sudo sed -i '$ a #WINDOWS' /etc/fstab
+sudo sed -i '$ a # \t\t nvme0n1p3 - Windows 10' /etc/fstab
+sudo sed -i '$ a UUID=82062AED062AE1C1\t/media/btrfs/hdd\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+
+sudo sed -i '$ a # \t\t nvme0n1p4 - Windows SSD' /etc/fstab
+sudo sed -i '$ a UUID=C88A20498A20367A\t/media/btrfs/bkp\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+
+# ---------------------------------REBOOT---------------------------------------
 
 echo
 /bin/echo -e "\e[1;32mREBOOTING IN 5..4..3..2..1..\e[0m"
