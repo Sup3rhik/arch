@@ -68,6 +68,8 @@ useradd -mG wheel,users,storage,power,lp,adm,optical,audio,video ivo
 echo ivo:passwd | chpasswd
 echo "ivo ALL=(ALL) ALL" >> /etc/sudoers.d/ivo
 
+#----------------------------------RAZNO------------------------------------
+
 ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
 ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d/
 ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/
