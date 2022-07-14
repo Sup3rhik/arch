@@ -103,8 +103,6 @@ sudo systemctl enable --now ckb-next-daemon
 echo "  iCue enabled and started"
 sudo systemctl enable --now zramd.service
 echo "  SWAP enabled and started"
-sudo systemctl enable auto-cpufreq
-echo "  Auto-CPU enabled"
 
 # ---------------------------------FIREWALL---------------------------------------
 
