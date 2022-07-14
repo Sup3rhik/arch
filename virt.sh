@@ -59,8 +59,8 @@ sudo echo "log_outputs="1:file:/var/log/libvirt/libvirtd.log"" >> /etc/libvirt/l
 
 sudo usermod -a -G libvirt $(whoami)
 
-sed -i '/#user = "libvirt-qemu"/c \user = "ivo"' /etc/mkinitcpio.conf
-sed -i '/#group = "libvirt-qemu"/c \group = "wheel"' /etc/mkinitcpio.conf
+sed -i '/#user = "libvirt-qemu"/c \user = "ivo"' /etc/libvirt/qemu.conf
+sed -i '/#group = "libvirt-qemu"/c \group = "wheel"' /etc/libvirt/qemu.conf
 sudo mkdir -p /var/lib/libvirt/vbios
 
 #-------------------------------------------------------------------------
