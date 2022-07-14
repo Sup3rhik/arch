@@ -41,6 +41,8 @@ pacman -S --noconfirm btrfs-progs base-devel linux-zen-headers linux-firmware gr
 #----------------------------------GRUB-------------------------------------
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
+sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/c \GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 intel_iommu=on iommu=pt"' /etc/default/grub
+
 grub-mkconfig -o /boot/grub/grub.cfg
 
 #----------------------------------SERVICES---------------------------------
