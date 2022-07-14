@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#----------------------------------BTRFS----------------------------------
+
+sed -i '/MODULES=()/c \MODULES=(btrfs)' /etc/mkinitcpio.conf
+mkinitcpio -p linux-zen
+
 #----------------------------------VRIJEME--------------------------------
 
 ln -sf /usr/share/zoneinfo/Europe/Zagreb /etc/localtime
