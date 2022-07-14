@@ -33,24 +33,24 @@ echo root:passwd | chpasswd
 # EDITOR=vim visudo         uncomment      %wheel ALL=(ALL:ALL) ALL
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
-#----------------------------------PARU-----------------------------------
+#----------------------------------MULTILIB-------------------------------
 
 #Enable multilib
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
-#----------------------------------APPS-------------------------------------
+#----------------------------------APPS-----------------------------------
 
 pacman -Sy --noconfirm --needed
 pacman -S --noconfirm btrfs-progs base-devel linux-zen-headers linux-firmware grub efibootmgr dosfstools os-prober mtools networkmanager dialog wpa_supplicant wireless_tools nano wget reflector snapper dolphin konsole rsync ark unzip ntfs-3g kate bash-completion sof-firmware flatpak kinit ttf-droid ttf-hack ttf-font-awesome otf-font-awesome ttf-lato ttf-liberation ttf-linux-libertine ttf-opensans ttf-roboto ttf-ubuntu-font-family terminus-font ufw cronie ksysguard htop kfind sshfs samba openssh nfs-utils cups nmap print-manager cups-pdf grub-customizer
 
-#----------------------------------GRUB-------------------------------------
+#----------------------------------GRUB-----------------------------------
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
 sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/c \GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 intel_iommu=on iommu=pt"' /etc/default/grub
 sed -i '/#GRUB_DISABLE_OS_PROBER="false"/c \GRUB_DISABLE_OS_PROBER="false"' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-#----------------------------------SERVICES---------------------------------
+#----------------------------------SERVICES-------------------------------
 
 systemctl enable NetworkManager
 systemctl enable bluetooth
@@ -62,13 +62,13 @@ systemctl enable reflector.timer
 systemctl enable fstrim.timer
 systemctl mask hibernate.target hybrid-sleep.target
 
-#----------------------------------USER-------------------------------------
+#----------------------------------USER------------------------------------
 
 useradd -mG wheel,users,storage,power,lp,adm,optical,audio,video ivo
 echo ivo:passwd | chpasswd
 echo "ivo ALL=(ALL) ALL" >> /etc/sudoers.d/ivo
 
-#----------------------------------RAZNO------------------------------------
+#----------------------------------RAZNO-----------------------------------
 
 ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
 ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d/
