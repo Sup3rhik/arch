@@ -8,6 +8,7 @@ git clone https://aur.archlinux.org/paru-bin
 cd paru-bin
 sudo pacman -Syu
 makepkg -si
+cd ..
 
 echo
 echo "INSTALLING SOFTWARE"
