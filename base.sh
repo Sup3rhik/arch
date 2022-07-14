@@ -25,6 +25,7 @@ echo root:passwd | chpasswd
 
 #----------------------------------SUDO-----------------------------------
 
+# EDITOR=vim visudo         uncomment      %wheel ALL=(ALL:ALL) ALL
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
 #----------------------------------PARU-----------------------------------
