@@ -78,12 +78,11 @@ echo "Numlock=On" >> /etc/sddm.conf
 sed -i '12s/.//' /etc/profile.d/freetype2.sh
 echo "PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"" >> /etc/environment
 echo "EDITOR="/usr/bin/vim"" >> /etc/environment
-localectl --no-ask-password set-keymap hr
 
 #----------------------------------KDE------------------------------------
 
 pacman -S --noconfirm plasma sddm
-# systemctl enable sddm
+systemctl enable sddm
 
 #----------------------------------EXIT----------------------------------
 printf "\e[1;32mDone! Type EXIT, UMOUNT and REBOOT.\e[0m"
