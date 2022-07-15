@@ -47,14 +47,23 @@ grub-mkconfig -o /boot/grub/grub.cfg
 #----------------------------------SERVICES-------------------------------
 
 systemctl enable NetworkManager
+sleep 1
 systemctl enable bluetooth
+sleep 1
 systemctl enable cups.service
+sleep 1
 systemctl enable cronie
+sleep 1
 systemctl enable sshd
+sleep 1
 systemctl enable smb
+sleep 1
 systemctl enable reflector.timer
+sleep 1
 systemctl enable fstrim.timer
+sleep 1
 systemctl mask hibernate.target hybrid-sleep.target
+sleep 1
 
 #----------------------------------USER------------------------------------
 
@@ -87,6 +96,7 @@ echo "EDITOR="/usr/bin/vim"" >> /etc/environment
 
 pacman -S --noconfirm plasma sddm
 systemctl enable sddm
+sleep 1
 
 tar -xzvf config.tar.gz
 tar -xzvf icons.tar.gz
