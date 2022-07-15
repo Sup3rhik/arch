@@ -122,8 +122,8 @@ echo "  firewall enabled and started"
 sudo ufw default deny
 sudo ufw enable
 sudo ufw allow from 192.168.0.0/24
-#sudo ufw allow 1714:1764/udp
-#sudo ufw allow 1714:1764/tcp
+sudo ufw allow 1714:1764/udp
+sudo ufw allow 1714:1764/tcp
 sudo ufw reload
 
 # ---------------------------------THEME---------------------------------------
