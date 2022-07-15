@@ -96,9 +96,7 @@ echo
 
 # ---------------------------------APPS-PARU--------------------------------------
 
-paru -S --noconfirm aic94xx-firmware wd719x-firmware packagekit-qt5 gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next vivaldi brave-bin
-paru -S --noconfirm etcher-bin mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin lutris-git spotify teamviewer zramd 
-paru -S --noconfirm auto-cpufreq capt-src
+paru -S --noconfirm aic94xx-firmware wd719x-firmware packagekit-qt5 gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next vivaldi brave-bin etcher-bin mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin lutris-git spotify teamviewer zramd auto-cpufreq capt-src
 
 # ---------------------------------SERVICES---------------------------------------
 
@@ -139,7 +137,7 @@ sleep 2
 # ---------------------------------FSTAB---------------------------------------
 
 sudo sed -i '$ a # \t\t nvme1n1p3 - Linux SSD' /etc/fstab
-sudo sed -i '$ a UUID=76effae1-d708-471a-bb38-b8f9bec3f6a3\t/media/btrfs/ssd\tbtrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a UUID=a4821538-7f3b-4106-872e-e98fbc7952db\t/media/btrfs/ssd\tbtrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 sudo sed -i '$ a #HDD' /etc/fstab
 sudo sed -i '$ a # \t\t sda1 - NEXTCLOUD' /etc/fstab
