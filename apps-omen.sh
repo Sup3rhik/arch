@@ -129,45 +129,34 @@ sudo ufw reload
 
 # ---------------------------------THEME---------------------------------------
 
-tar -xzvf config.tar.gz
-tar -xzvf icons.tar.gz
-tar -xzvf local.tar.gz
 tar -xzvf Omen.tar.gz
-
-mv .config ~/
-mv .icons ~/
-mv .local ~/
 sudo mv Omen /usr/share/sddm/themes/
 
-sudo rm -rf /usr/share/sddm/themes/maldives
-sudo rm -rf /usr/share/sddm/themes/maya
-sudo rm -rf /usr/share/sddm/themes/elarun
-sudo rm -rf /usr/share/sddm/themes/breeze
-
 lookandfeeltool -a org.kde.breezedark.desktop
+sleep 2
 /usr/lib/plasma-changeicons BeautyLine
 
 # ---------------------------------FSTAB---------------------------------------
 
 sudo sed -i '$ a # \t\t nvme1n1p3 - Linux SSD' /etc/fstab
-sudo sed -i '$ a UUID=88dc93fb-c83a-4fdf-9cc4-e3d2f958fe8e\t/media/btrfs/ssd\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a UUID=76effae1-d708-471a-bb38-b8f9bec3f6a3\t/media/btrfs/ssd\tbtrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 sudo sed -i '$ a #HDD' /etc/fstab
 sudo sed -i '$ a # \t\t sda1 - NEXTCLOUD' /etc/fstab
-sudo sed -i '$ a UUID=fdd0754d-49f0-4802-80ee-40f23d641fea\t/media/btrfs/nc\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a UUID=fdd0754d-49f0-4802-80ee-40f23d641fea\t/media/btrfs/nc\tbtrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 sudo sed -i '$ a # \t\t sda2 - STORAGE' /etc/fstab
-sudo sed -i '$ a UUID=2750d2ff-3da2-4904-9a9f-b73ae91a8fbe\t/media/btrfs/hdd\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a UUID=2750d2ff-3da2-4904-9a9f-b73ae91a8fbe\t/media/btrfs/hdd\tbtrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 sudo sed -i '$ a # \t\t sda3 - BACKUPS' /etc/fstab
-sudo sed -i '$ a UUID=a3f1d11d-0fcc-46b5-9821-9801c2206b97\t/media/btrfs/bkp\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a UUID=a3f1d11d-0fcc-46b5-9821-9801c2206b97\t/media/btrfs/bkp\tbtrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 sudo sed -i '$ a #WINDOWS' /etc/fstab
 sudo sed -i '$ a # \t\t nvme0n1p3 - Windows 10' /etc/fstab
-sudo sed -i '$ a UUID=82062AED062AE1C1\t/media/btrfs/hdd\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a UUID=82062AED062AE1C1\t/media/ntfs/hdd\tntfs-3g\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 sudo sed -i '$ a # \t\t nvme0n1p4 - Windows SSD' /etc/fstab
-sudo sed -i '$ a UUID=C88A20498A20367A\t/media/btrfs/bkp\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a UUID=C88A20498A20367A\t/media/ntfs/bkp\tntfs-3g\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 # ---------------------------------REBOOT---------------------------------------
 
