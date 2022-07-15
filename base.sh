@@ -89,23 +89,14 @@ sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 #Enable multilib
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
-#----------------------------------RAZNO-----------------------------------
-
-ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
-ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d/
-ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/
-
-echo "Numlock=On" >> /etc/sddm.conf
-sed -i '12s/.//' /etc/profile.d/freetype2.sh
-echo "PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"" >> /etc/environment
-echo "EDITOR="/usr/bin/vim"" >> /etc/environment
-
 #----------------------------------KDE------------------------------------
 
 pacman -S --noconfirm plasma sddm
 systemctl enable sddm
 echo " sddm enabled "
 sleep 1
+
+#----------------------------------THEME----------------------------------
 
 tar -xzvf config.tar.gz
 tar -xzvf icons.tar.gz
@@ -119,6 +110,17 @@ rm -rf /usr/share/sddm/themes/maldives
 rm -rf /usr/share/sddm/themes/maya
 rm -rf /usr/share/sddm/themes/elarun
 rm -rf /usr/share/sddm/themes/breeze
+
+#----------------------------------RAZNO-----------------------------------
+
+ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
+ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d/
+ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/
+
+echo "Numlock=On" >> /etc/sddm.conf
+sed -i '12s/.//' /etc/profile.d/freetype2.sh
+echo "PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"" >> /etc/environment
+echo "EDITOR="/usr/bin/vim"" >> /etc/environment
 
 #----------------------------------EXIT----------------------------------
 printf "\e[1;32mDone! Type exit, umount -a and REBOOT.\e[0m"
