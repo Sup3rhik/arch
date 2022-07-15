@@ -99,9 +99,9 @@ sleep 1
 
 #----------------------------------THEME----------------------------------
 
-tar -xzvf config.tar.gz ~/
-tar -xzvf icons.tar.gz ~/
-tar -xzvf local.tar.gz ~/
+tar -xzvf config.tar.gz /home/ivo
+tar -xzvf icons.tar.gz /home/ivo
+tar -xzvf local.tar.gz /home/ivo
 
 rm -rf /usr/share/sddm/themes/maldives
 rm -rf /usr/share/sddm/themes/maya
