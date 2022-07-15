@@ -50,6 +50,7 @@ PKGS=(
     'neofetch'
     'qbittorrent'
     'kvantum'
+    'kdeconnect'
 
     # DISK UTILITIES ------------------------------------------------------
 
@@ -149,7 +150,7 @@ lookandfeeltool -a org.kde.breezedark.desktop
 # ---------------------------------FSTAB---------------------------------------
 
 sudo sed -i '$ a # \t\t nvme1n1p3 - Linux SSD' /etc/fstab
-sudo sed -i '$ a UUID=c388d55f-1412-4413-863d-a2e3104fc66a\t/media/btrfs/ssd\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a UUID=88dc93fb-c83a-4fdf-9cc4-e3d2f958fe8e\t/media/btrfs/ssd\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 sudo sed -i '$ a #HDD' /etc/fstab
 sudo sed -i '$ a # \t\t sda1 - NEXTCLOUD' /etc/fstab
