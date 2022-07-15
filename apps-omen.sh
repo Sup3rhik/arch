@@ -16,7 +16,8 @@ PKGS=(
 
     # Wine ----------------------------------------------------------------
 
-    'wine-staging'
+    'wine'
+    'winetricks'
     'wine-mono'
     'wine-gecko'
 
