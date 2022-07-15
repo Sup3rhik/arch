@@ -91,6 +91,7 @@ sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 #----------------------------------KDE------------------------------------
 
+pacman -Sy --noconfirm
 pacman -S --noconfirm plasma sddm
 systemctl enable sddm
 echo " sddm enabled "
@@ -98,13 +99,9 @@ sleep 1
 
 #----------------------------------THEME----------------------------------
 
-tar -xzvf config.tar.gz
-tar -xzvf icons.tar.gz
-tar -xzvf local.tar.gz
-
-mv .config ~/
-mv .icons ~/
-mv .local ~/
+tar -xzvf config.tar.gz ~/
+tar -xzvf icons.tar.gz ~/
+tar -xzvf local.tar.gz ~/
 
 rm -rf /usr/share/sddm/themes/maldives
 rm -rf /usr/share/sddm/themes/maya
