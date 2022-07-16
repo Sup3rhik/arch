@@ -96,7 +96,7 @@ echo
 
 # ---------------------------------APPS-PARU--------------------------------------
 
-paru -S --noconfirm aic94xx-firmware wd719x-firmware packagekit-qt5 gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next vivaldi brave-bin etcher-bin mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin lutris-git spotify teamviewer zramd auto-cpufreq capt-src
+paru -S --noconfirm aic94xx-firmware wd719x-firmware packagekit-qt5 gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next vivaldi brave-bin etcher-bin mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin protonup-qt lutris-git spotify teamviewer zramd auto-cpufreq capt-src
 
 # ---------------------------------SERVICES---------------------------------------
 
