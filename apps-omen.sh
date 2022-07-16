@@ -102,6 +102,8 @@ paru -S --noconfirm aic94xx-firmware wd719x-firmware packagekit-qt5 gst-plugin-l
 
 sudo systemctl enable --now intel-undervolt.service
 echo "  intel-undervolt enabled and started"
+sudo systemctl enable --now cpupower.service
+echo "  cpupower enabled and started"
 sudo systemctl enable --now auto-cpufreq.service
 echo "  auto-cpufreq enabled and started"
 sudo systemctl enable teamviewerd
