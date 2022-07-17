@@ -95,6 +95,16 @@ systemctl enable sddm
 echo " sddm enabled "
 sleep 1
 
+#----------------------------------PARU-----------------------------------
+
+git clone https://aur.archlinux.org/paru-bin
+cd paru-bin
+pacman -Syu
+makepkg -si
+cd ..
+
+paru -S --noconfirm snap-pac-grub snapper-gui
+
 #----------------------------------THEME----------------------------------
 
 tar -xzvf Archive.tar.gz
