@@ -25,7 +25,7 @@ echo root:passwd | chpasswd
 
 #----------------------------------APPS-----------------------------------
 
-sudo reflector -c Croatia -a 10 --sort rate --save /etc/pacman.d/mirrorlist
+reflector -c Croatia -a 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 pacman -Sy --noconfirm --needed
 pacman -S --noconfirm btrfs-progs base-devel linux-zen-headers linux-firmware grub efibootmgr dosfstools os-prober mtools networkmanager dialog wpa_supplicant wireless_tools nano wget reflector snapper dolphin konsole rsync ark unzip ntfs-3g kate bash-completion sof-firmware flatpak kinit ttf-droid ttf-hack ttf-font-awesome otf-font-awesome ttf-lato ttf-liberation ttf-linux-libertine ttf-opensans ttf-roboto ttf-ubuntu-font-family terminus-font ufw cronie ksysguard htop kfind sshfs samba openssh nfs-utils cups nmap print-manager cups-pdf grub-customizer
@@ -137,8 +137,11 @@ echo "EDITOR="/usr/bin/vim"" >> /etc/environment
     sed -i '/TIMELINE_LIMIT_YEARLY="10"/c \TIMELINE_LIMIT_YEARLY="0"' /etc/snapper/configs/root
 
     systemctl enable --now grub-btrfs.path
+    echo " grub-btrfs enabled "
     systemctl enable --now snapper-timeline.timer
+    echo " snapper-timeline enabled "
     systemctl enable --now snapper-cleanup.timer
+    echo " snapper-cleanup enabled "
 
 #----------------------------------EXIT----------------------------------
 printf "\e[1;32mDone! Type exit, umount -a and REBOOT.\e[0m"
