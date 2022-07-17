@@ -28,7 +28,7 @@ echo root:passwd | chpasswd
 sudo reflector -c Croatia -a 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 pacman -Sy --noconfirm --needed
-pacman -S --noconfirm base-devel linux-zen-headers linux-firmware grub efibootmgr dosfstools os-prober mtools networkmanager dialog wpa_supplicant wireless_tools nano duf wget reflector snapper btrfs-progs grub-btrfs dolphin konsole rsync ark unzip ntfs-3g kate bash-completion sof-firmware flatpak kinit ttf-droid ttf-hack ttf-font-awesome otf-font-awesome ttf-lato ttf-liberation ttf-linux-libertine ttf-opensans ttf-roboto ttf-ubuntu-font-family terminus-font ufw cronie ksysguard htop kfind sshfs samba openssh nfs-utils cups nmap print-manager cups-pdf grub-customizer
+pacman -S --noconfirm btrfs-progs base-devel linux-zen-headers linux-firmware grub efibootmgr dosfstools os-prober mtools networkmanager dialog wpa_supplicant wireless_tools nano wget reflector snapper dolphin konsole rsync ark unzip ntfs-3g kate bash-completion sof-firmware flatpak kinit ttf-droid ttf-hack ttf-font-awesome otf-font-awesome ttf-lato ttf-liberation ttf-linux-libertine ttf-opensans ttf-roboto ttf-ubuntu-font-family terminus-font ufw cronie ksysguard htop kfind sshfs samba openssh nfs-utils cups nmap print-manager cups-pdf grub-customizer
 
 #----------------------------------BTRFS----------------------------------
 
@@ -99,7 +99,6 @@ sleep 1
 
 #----------------------------------THEME----------------------------------
 
-tar -xzvf Archive.tar.gz
 tar -C /home/ivo/ -xzvf config.tar.gz
 tar -C /home/ivo/ -xzvf icons.tar.gz
 tar -C /home/ivo/ -xzvf local.tar.gz
@@ -119,6 +118,27 @@ echo "Numlock=On" >> /etc/sddm.conf
 sed -i '12s/.//' /etc/profile.d/freetype2.sh
 echo "PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"" >> /etc/environment
 echo "EDITOR="/usr/bin/vim"" >> /etc/environment
+
+#----------------------------------SNAPPER-----------------------------------
+
+    umount /.snapshots
+    rm -r /.snapshots
+    snapper -c root create-config /
+    btrfs subvolume delete /.snapshots
+    mkdir /.snapshots
+    mount -a
+    btrfs subvolume set-default 256 /
+    chown -R :wheel /.snapshots/
+
+    sed -i '/ALLOW_GROUPS=""/c \ALLOW_GROUPS="wheel"' /etc/snapper/configs/root
+    sed -i '/TIMELINE_LIMIT_HOURLY="10"/c \TIMELINE_LIMIT_HOURLY="5"' /etc/snapper/configs/root
+    sed -i '/TIMELINE_LIMIT_DAILY="10"/c \TIMELINE_LIMIT_DAILY="7"' /etc/snapper/configs/root
+    sed -i '/TIMELINE_LIMIT_MONTHLY="10"/c \TIMELINE_LIMIT_MONTHLY="0"' /etc/snapper/configs/root
+    sed -i '/TIMELINE_LIMIT_YEARLY="10"/c \TIMELINE_LIMIT_YEARLY="0"' /etc/snapper/configs/root
+
+    systemctl enable --now grub-btrfs.path
+    systemctl enable --now snapper-timeline.timer
+    systemctl enable --now snapper-cleanup.timer
 
 #----------------------------------EXIT----------------------------------
 printf "\e[1;32mDone! Type exit, umount -a and REBOOT.\e[0m"
