@@ -28,7 +28,7 @@ echo root:passwd | chpasswd
 reflector -c Croatia -a 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 pacman -Sy --noconfirm --needed
-pacman -S --noconfirm btrfs-progs base-devel linux-zen-headers linux-firmware grub efibootmgr dosfstools os-prober mtools networkmanager dialog wpa_supplicant wireless_tools nano wget reflector snapper dolphin konsole rsync ark unzip ntfs-3g kate bash-completion sof-firmware flatpak kinit ttf-droid ttf-hack ttf-font-awesome otf-font-awesome ttf-lato ttf-liberation ttf-linux-libertine ttf-opensans ttf-roboto ttf-ubuntu-font-family terminus-font ufw cronie ksysguard htop kfind sshfs samba openssh nfs-utils cups nmap print-manager cups-pdf grub-customizer
+pacman -S --noconfirm btrfs-progs base-devel linux-zen-headers linux-firmware grub efibootmgr dosfstools os-prober mtools networkmanager dialog wpa_supplicant wireless_tools nano wget reflector snapper dolphin konsole rsync ark unzip ntfs-3g kate bash-completion sof-firmware flatpak kinit ttf-droid ttf-hack ttf-font-awesome otf-font-awesome ttf-lato ttf-liberation ttf-linux-libertine ttf-opensans ttf-roboto ttf-ubuntu-font-family terminus-font ufw cronie ksysguard htop kfind sshfs samba openssh nfs-utils cups nmap print-manager cups-pdf grub-customizer qemu libvirt edk2-ovmf virt-manager vde2 dnsmasq bridge-utils iptables-nft ovmf openbsd-netcat
 
 #----------------------------------BTRFS----------------------------------
 
@@ -72,6 +72,19 @@ echo " fstrim enabled "
 sleep 1
 systemctl mask hibernate.target hybrid-sleep.target
 sleep 1
+systemctl enable --now libvirtd.service
+sleep 1
+echo "  libvirtd enabled and started"
+systemctl enable --now virtlogd.socket
+sleep 1
+echo "  virtlogd enabled and started"
+virsh net-autostart default
+sleep 1
+echo "  net-autostart enabled"
+virsh net-start default
+sleep 1
+echo "  net-start enabled"
+
 
 #----------------------------------USER------------------------------------
 
