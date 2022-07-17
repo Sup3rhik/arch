@@ -99,6 +99,7 @@ sleep 1
 
 #----------------------------------THEME----------------------------------
 
+tar -xzvf Archive.tar.gz
 tar -C /home/ivo/ -xzvf config.tar.gz
 tar -C /home/ivo/ -xzvf icons.tar.gz
 tar -C /home/ivo/ -xzvf local.tar.gz
