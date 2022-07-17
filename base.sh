@@ -21,14 +21,14 @@ echo "IME" >> /etc/hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 IME.localdomain IME" >> /etc/hosts
-echo root:passwd | chpasswd
+echo root:PASSWD | chpasswd
 
 #----------------------------------APPS-----------------------------------
 
-reflector -c Croatia -a 10 --sort rate --save /etc/pacman.d/mirrorlist
+reflector -c Croatia -a 6 --sort rate --save /etc/pacman.d/mirrorlist
 
 pacman -Sy --noconfirm --needed
-pacman -S --noconfirm btrfs-progs base-devel linux-zen-headers linux-firmware grub efibootmgr dosfstools os-prober mtools networkmanager dialog wpa_supplicant wireless_tools nano wget reflector snapper dolphin konsole rsync ark unzip ntfs-3g kate bash-completion sof-firmware flatpak kinit ttf-droid ttf-hack ttf-font-awesome otf-font-awesome ttf-lato ttf-liberation ttf-linux-libertine ttf-opensans ttf-roboto ttf-ubuntu-font-family terminus-font ufw cronie ksysguard htop kfind sshfs samba openssh nfs-utils cups nmap print-manager cups-pdf grub-customizer qemu libvirt edk2-ovmf virt-manager vde2 dnsmasq bridge-utils iptables-nft ovmf openbsd-netcat
+pacman -S --noconfirm base-devel linux-zen-headers linux-firmware grub efibootmgr dosfstools os-prober mtools networkmanager dialog wpa_supplicant wireless_tools nano wget reflector snapper btrfs-progs grub-btrfs duf dolphin konsole rsync ark unzip ntfs-3g kate bash-completion sof-firmware flatpak kinit ttf-droid ttf-hack ttf-font-awesome otf-font-awesome ttf-lato ttf-liberation ttf-linux-libertine ttf-opensans ttf-roboto ttf-ubuntu-font-family terminus-font ufw cronie ksysguard htop kfind sshfs samba openssh nfs-utils cups nmap print-manager cups-pdf grub-customizer
 
 #----------------------------------BTRFS----------------------------------
 
@@ -41,7 +41,6 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/c \GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 intel_iommu=on iommu=pt"' /etc/default/grub
 sleep 1
 sed -i '63s/.//' /etc/default/grub
-#sed -i '/#GRUB_DISABLE_OS_PROBER="false"/c \GRUB_DISABLE_OS_PROBER="false"' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 #----------------------------------SERVICES-------------------------------
@@ -72,29 +71,15 @@ echo " fstrim enabled "
 sleep 1
 systemctl mask hibernate.target hybrid-sleep.target
 sleep 1
-systemctl enable --now libvirtd.service
-sleep 1
-echo "  libvirtd enabled and started"
-systemctl enable --now virtlogd.socket
-sleep 1
-echo "  virtlogd enabled and started"
-virsh net-autostart default
-sleep 1
-echo "  net-autostart enabled"
-virsh net-start default
-sleep 1
-echo "  net-start enabled"
-
 
 #----------------------------------USER------------------------------------
 
 useradd -mG wheel,users,storage,power,lp,adm,optical,audio,video ivo
-echo ivo:passwd | chpasswd
+echo ivo:PASSWD | chpasswd
 echo "ivo ALL=(ALL) ALL" >> /etc/sudoers.d/ivo
 
 #----------------------------------SUDO-----------------------------------
 
-# EDITOR=vim visudo         uncomment      %wheel ALL=(ALL:ALL) ALL
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
 #----------------------------------MULTILIB-------------------------------
@@ -112,6 +97,7 @@ sleep 1
 
 #----------------------------------THEME----------------------------------
 
+tar -xzvf Archive.tar.gz
 tar -C /home/ivo/ -xzvf config.tar.gz
 tar -C /home/ivo/ -xzvf icons.tar.gz
 tar -C /home/ivo/ -xzvf local.tar.gz
@@ -131,30 +117,6 @@ echo "Numlock=On" >> /etc/sddm.conf
 sed -i '12s/.//' /etc/profile.d/freetype2.sh
 echo "PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"" >> /etc/environment
 echo "EDITOR="/usr/bin/vim"" >> /etc/environment
-
-#----------------------------------SNAPPER-----------------------------------
-
-    umount /.snapshots
-    rm -r /.snapshots
-    snapper -c root create-config /
-    btrfs subvolume delete /.snapshots
-    mkdir /.snapshots
-    mount -a
-    btrfs subvolume set-default 256 /
-    chown -R :wheel /.snapshots/
-
-    sed -i '/ALLOW_GROUPS=""/c \ALLOW_GROUPS="wheel"' /etc/snapper/configs/root
-    sed -i '/TIMELINE_LIMIT_HOURLY="10"/c \TIMELINE_LIMIT_HOURLY="5"' /etc/snapper/configs/root
-    sed -i '/TIMELINE_LIMIT_DAILY="10"/c \TIMELINE_LIMIT_DAILY="7"' /etc/snapper/configs/root
-    sed -i '/TIMELINE_LIMIT_MONTHLY="10"/c \TIMELINE_LIMIT_MONTHLY="0"' /etc/snapper/configs/root
-    sed -i '/TIMELINE_LIMIT_YEARLY="10"/c \TIMELINE_LIMIT_YEARLY="0"' /etc/snapper/configs/root
-
-    systemctl enable --now grub-btrfs.path
-    echo " grub-btrfs enabled "
-    systemctl enable --now snapper-timeline.timer
-    echo " snapper-timeline enabled "
-    systemctl enable --now snapper-cleanup.timer
-    echo " snapper-cleanup enabled "
 
 #----------------------------------EXIT----------------------------------
 printf "\e[1;32mDone! Type exit, umount -a and REBOOT.\e[0m"

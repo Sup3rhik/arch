@@ -89,11 +89,23 @@ PKGS=(
     'ipp-usb'
     'skanlite'
 
+    # VIRT MANAGER---------------------------------------------------------
+
+    'qemu'
+    'libvirt'
+    'edk2-ovmf'
+    'virt-manager'
+    'vde2'
+    'dnsmasq'
+    'bridge-utils'
+    'ovmf'
+    'openbsd-netcat'
+
     # LAPTOP --------------------------------------------------------------
 
     'intel-undervolt'
     'cpupower'
-    
+
 )
 
 for PKG in "${PKGS[@]}"; do
@@ -105,35 +117,13 @@ echo
 echo "Done!"
 echo
 
+pacman -S iptables-nft
+
 # ---------------------------------APPS-PARU--------------------------------------
 
 paru -S --noconfirm aic94xx-firmware wd719x-firmware packagekit-qt5 gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next vivaldi brave-bin etcher-bin mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin protonup-qt lutris-git spotify teamviewer zramd auto-cpufreq capt-src
 
 #----------------------------------VIRT MANAGER-----------------------------------
-
-PKGS=(
-
-    'qemu'
-    'libvirt'
-    'edk2-ovmf'
-    'virt-manager'
-    'vde2'
-    'dnsmasq'
-    'bridge-utils'
-    'iptables-nft'
-    'ovmf'
-    'openbsd-netcat'
-
-)
-
-for PKG in "${PKGS[@]}"; do
-    echo "INSTALLING: ${PKG}"
-    sudo pacman -S "$PKG"
-done
-
-echo
-echo "Done!"
-echo
 
 sudo mkdir -p /etc/libvirt/hooks
 sudo wget 'https://raw.githubusercontent.com/PassthroughPOST/VFIO-Tools/master/libvirt_hooks/qemu' \
