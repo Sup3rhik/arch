@@ -9,7 +9,7 @@ makepkg -si --noconfirm
 
 # ---------------------------------APPS-----------------------------------
 
-paru -S --noconfirm aic94xx-firmware wd719x-firmware brave-bin zramd
+paru -S --noconfirm aic94xx-firmware wd719x-firmware brave-bin zramd snap-pac-grub snapper-gui
 sudo systemctl enable --now zramd.service
 echo "  SWAP enabled and started"
 
