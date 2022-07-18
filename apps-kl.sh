@@ -101,7 +101,7 @@ echo
 
 # ---------------------------------APPS-PARU--------------------------------------
 
-paru -S --noconfirm  gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next vivaldi etcher-bin mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin protonup-qt lutris-git spotify teamviewer auto-cpufreq capt-src
+paru -S --noconfirm  gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next vivaldi etcher-bin mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin protonup-qt lutris-git spotify teamviewer capt-src
 
 #----------------------------------VIRT MANAGER-----------------------------------
 
