@@ -5,23 +5,7 @@ sudo pacman -S --noconfirm archlinux-keyring
 sudo pacman -Syu --noconfirm
 tar -xzvf Archive.tar.gz
 
-#---------------------------------PARU-----------------------------------------
-
-git clone https://aur.archlinux.org/paru-bin
-cd paru-bin
-sudo pacman -Syu
-makepkg -si
-cd ..
-
-#-----------------------------------SYNTH-SHELL-----------------------------------
-
-git clone --recursive https://github.com/andresgongora/synth-shell.git
-chmod +x synth-shell/setup.sh
-cd synth-shell
-./setup.sh
-cd ..
-
-#---------------------------------APPS-PACMAN----------------------------------
+#---------------------------------APPS-PACMAN-----------------------------
 
 PKGS=(
 
@@ -62,6 +46,8 @@ PKGS=(
     'qbittorrent'
     'kvantum'
     'kdeconnect'
+    'stress'
+    'packagekit-qt5'
 
     # DISK UTILITIES ------------------------------------------------------
 
@@ -106,6 +92,7 @@ PKGS=(
     'intel-undervolt'
     'cpupower'
 
+
 )
 
 for PKG in "${PKGS[@]}"; do
@@ -117,11 +104,9 @@ echo
 echo "Done!"
 echo
 
-pacman -S iptables-nft
-
 # ---------------------------------APPS-PARU--------------------------------------
 
-paru -S --noconfirm aic94xx-firmware wd719x-firmware packagekit-qt5 gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next vivaldi brave-bin etcher-bin mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin protonup-qt lutris-git spotify teamviewer zramd auto-cpufreq capt-src
+paru -S --noconfirm  gst-plugin-libde265 peazip-qt5 latte-dock-git ckb-next vivaldi etcher-bin mangohud lib32-mangohud heroic-games-launcher-bin proton-ge-custom-bin protonup-qt lutris-git spotify teamviewer auto-cpufreq capt-src
 
 #----------------------------------VIRT MANAGER-----------------------------------
 
@@ -133,9 +118,11 @@ sudo mkdir -p /etc/libvirt/hooks/qemu.d/Windows/prepare/begin
 sudo mkdir -p /etc/libvirt/hooks/qemu.d/Windows/release/end
 
 sudo tar -C /etc/libvirt/hooks/qemu.d/Windows/prepare/begin/ -xzvf start.tar.gz
+rm start.tar.gz
 sudo chmod +x /etc/libvirt/hooks/qemu.d/Windows/prepare/begin/start.sh
 
 sudo tar -C /etc/libvirt/hooks/qemu.d/Windows/release/end/ -xzvf revert.tar.gz
+rm revert.tar.gz
 sudo chmod +x /etc/libvirt/hooks/qemu.d/Windows/release/end/revert.sh
 
 sudo touch /etc/libvirt/hooks/kvm.conf
@@ -158,6 +145,7 @@ sudo sed -i '/#group = "libvirt-qemu"/c \group = "wheel"' /etc/libvirt/qemu.conf
 
 sudo mkdir -p /var/lib/libvirt/vbios
 sudo tar -C /var/lib/libvirt/vbios -xzvf gpu.tar.gz
+rm gpu.tar.gz
 sudo chmod 644 /var/lib/libvirt/vbios/gpu.rom
 
 #-----------------------------------INTEL-UNDERVOLT-------------------------------
@@ -169,6 +157,7 @@ sudo sed -i '/undervolt 2 '"'"'CPU Cache'"'"' 0/c \undervolt 2 '"'"'CPU Cache'"'
 #-----------------------------------SAMBA-----------------------------------------
 
 sudo tar -C /etc/samba/ -xzvf smb.tar.gz
+rm smb.tar.gz
 
 #-----------------------------------CANON-LBP6310---------------------------------
 
@@ -176,7 +165,9 @@ lpadmin -p LBP6310 -m CNCUPSLBP6310CAPTK.ppd -v ccp://localhost:59687 -E
 sudo ccpdadmin -p LBP6310 -o net:192.168.0.250
 sudo systemctl enable --now ccpd.service
 sudo tar -C /etc/systemd/system/ -xzvf ccpd-service.tar.gz
+rm ccpd-service.tar.gz
 sudo tar -C /usr/local/sbin/ -xzvf ccpd-sh.tar.gz
+rm ccpd-sh.tar.gz
 sudo chmod +x /usr/local/sbin/restartccpd.sh
 sudo systemctl enable restartccpd.service
 
@@ -197,9 +188,6 @@ sudo systemctl enable teamviewerd
 echo "  teamviewerd enabled"
 sudo systemctl enable --now ckb-next-daemon
 echo "  iCue enabled and started"
-sudo systemctl enable --now zramd.service
-echo "  SWAP enabled and started"
-sudo sed -i '/#DefaultTimeoutStopSec=90s/c \DefaultTimeoutStopSec=10s' /etc/systemd/system.conf
 sudo systemctl enable --now libvirtd.service
 echo "  libvirtd enabled and started"
 sudo systemctl enable --now virtlogd.socket
@@ -210,9 +198,6 @@ sudo virsh net-start default
 echo "  net-start enabled"
 
 # ---------------------------------FIREWALL---------------------------------------
-
-echo
-echo "ENABLING FIREWALL"
 
 sudo systemctl enable ufw.service --now
 echo "  firewall enabled and started"
@@ -226,16 +211,20 @@ sudo ufw reload
 # ---------------------------------THEME---------------------------------------
 
 tar -xzvf Omen.tar.gz
+rm Omen.tar.gz
 sudo mv Omen /usr/share/sddm/themes/
-
-lookandfeeltool -a org.kde.breezedark.desktop
-sleep 2
-/usr/lib/plasma-changeicons BeautyLine
+tar -C /home/ivo/ -xzvf config.tar.gz
+rm config.tar.gz
+tar -C /home/ivo/ -xzvf icons.tar.gz
+rm icons.tar.gz
+tar -C /home/ivo/ -xzvf local.tar.gz
+rm local.tar.gz
+rm Dragon.tar.gz
 
 # ---------------------------------FSTAB---------------------------------------
 
-sudo sed -i '$ a # \t\t nvme1n1p3 - Linux SSD' /etc/fstab
-sudo sed -i '$ a #UUID=a4821538-7f3b-4106-872e-e98fbc7952db\t/media/btrfs/ssd\tbtrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a # \t\t nvme1n1p3 - Games SSD' /etc/fstab
+sudo sed -i '$ a UUID=a998a63a-af44-42b9-9b89-d15821e6e095\t/media/btrfs/ssd\tbtrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 sudo sed -i '$ a #HDD' /etc/fstab
 sudo sed -i '$ a # \t\t sda1 - NEXTCLOUD' /etc/fstab
