@@ -105,6 +105,7 @@ echo "Numlock=On" >> /etc/sddm.conf
 sed -i '12s/.//' /etc/profile.d/freetype2.sh
 echo "PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"" >> /etc/environment
 echo "EDITOR="/usr/bin/vim"" >> /etc/environment
+sudo sed -i '/#DefaultTimeoutStopSec=90s/c \DefaultTimeoutStopSec=10s' /etc/systemd/system.conf
 
 ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
 ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d/
