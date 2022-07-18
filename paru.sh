@@ -15,7 +15,10 @@ cd ..
 
 paru -S --noconfirm aic94xx-firmware wd719x-firmware brave-bin zramd
 sudo systemctl enable --now zramd.service
-echo "  SWAP enabled and started"
+echo "  SWAP enabled and started "
+
+lookandfeeltool -a org.kde.breezedark.desktop
+/usr/lib/plasma-changeicons BeautyLine
 
 echo
 /bin/echo -e "\e[1;32mD O N E\e[0m"
