@@ -198,27 +198,27 @@ rm Omen.tar.gz
 # ---------------------------------FSTAB---------------------------------------
 
 sudo sed -i '$ a # \t\t nvme1n1p3 - Games SSD' /etc/fstab
-sudo sed -i '$ a #UUID=26d327c5-d5a7-4e39-a782-b9374951e0ee\t/media/btrfs/ssd\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a #UUID=26d327c5-d5a7-4e39-a782-b9374951e0ee\t/media/btrfs/ssd\tbtrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 sudo sed -i '$ a #HDD' /etc/fstab
 sudo sed -i '$ a # \t\t sdc1 - NEXTCLOUD' /etc/fstab
-sudo sed -i '$ a UUID=f4b349cb7-6aad-44a8-b1d5-105b4bcfd29d\t/media/btrfs/nc\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a UUID=f4b349cb7-6aad-44a8-b1d5-105b4bcfd29d\t/media/btrfs/nc\tbtrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 sudo sed -i '$ a # \t\t sdc3 - HDD' /etc/fstab
-sudo sed -i '$ a UUID=130efac5-8fbe-4a27-80f8-97be0158e5a0\t/media/btrfs/hdd\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a UUID=130efac5-8fbe-4a27-80f8-97be0158e5a0\t/media/btrfs/hdd\tbtrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 sudo sed -i '$ a # \t\t sdc2 - BACKUPS' /etc/fstab
-sudo sed -i '$ a UUID=3530600d-1f05-422a-8372-87ae1d0c5e27\t/media/btrfs/bkp\btrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a UUID=3530600d-1f05-422a-8372-87ae1d0c5e27\t/media/btrfs/bkp\tbtrfs\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 sudo sed -i '$ a #WINDOWS' /etc/fstab
 sudo sed -i '$ a # \t\t sda3 - Windows 10' /etc/fstab
-sudo sed -i '$ a UUID=08E2109DE21090D4\t/media/ntfs/w-sys\ntfs-3g\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a UUID=08E2109DE21090D4\t/media/ntfs/w-sys\tntfs-3g\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 sudo sed -i '$ a # \t\t sda4 - Windows SSD' /etc/fstab
-sudo sed -i '$ a UUID=26F6AD3E032C2534\t/media/ntfs/w-ssd\ntfs-3g\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a UUID=26F6AD3E032C2534\t/media/ntfs/w-ssd\tntfs-3g\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 sudo sed -i '$ a # \t\t sdb1 - Samsung' /etc/fstab
-sudo sed -i '$ a UUID=03B140B373965BED\t/media/ntfs/evo\ntfs-3g\tdefaults,rw,relatime\t0\t0' /etc/fstab
+sudo sed -i '$ a UUID=03B140B373965BED\t/media/ntfs/evo\tntfs-3g\tdefaults,rw,relatime\t0\t0' /etc/fstab
 
 # ---------------------------------REBOOT---------------------------------------
 
